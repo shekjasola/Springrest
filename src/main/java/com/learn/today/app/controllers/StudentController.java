@@ -20,23 +20,23 @@ import com.learn.today.app.services.StudentService;
 public class StudentController {
 	
 	@Autowired
-	private StudentService studentService;
+	private StudentService Service;
 	
 	@GetMapping("/student/courses")
 	public List<Course> getAllCourses() {
-		return studentService.getAllCourses();
+		return Service.getAllCourses();
 	}
 	
 	@PostMapping("/student")
 	public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
-		studentService.saveStudent(student);
+		Service.saveStudent(student);
 		ResponseEntity<Student> responseEntity = new ResponseEntity<Student>(student, HttpStatus.CREATED);
 		return responseEntity;
 	}
 	
 	@DeleteMapping("/student/{id}")
 	public void deleteStudent(@PathVariable int id) {
-		studentService.deleteStudent(id);
+		Service.deleteStudent(id);
 	}
 
 }
